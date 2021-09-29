@@ -149,7 +149,33 @@ export default styles = StyleSheet.create({
         height: height * 0.6
     },
     chatContainer:{
-        flex: 1,
-        backgroundColor: '#FFB6B5',
+        backgroundColor: '#122543',
+        justifyContent: "center",
+        alignItems: "center",
+        height: height * 0.1,
+        width: width * 0.9,
+        marginTop: height * 0.05,
+        marginLeft: width * 0.05,
+        borderRadius: 8,
+
+    },
+    chatScreen:{ 
+       flex: 1,
+       backgroundColor:'#FFB6B5'
+
+    },
+    text:{
+        fontSize: 20, 
+        color: '#FFB6B5',
+    },
+    currentEmail:{
+
+    },
+    image:{
+        marginLeft: width * 0.29,
+        marginTop: height * 0.15,
+        borderRadius: 15,
+        height: height * 0.20,
+        width: width * 0.35, 
     }
 })

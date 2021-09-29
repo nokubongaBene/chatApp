@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import {SafeAreaView,Alert, ScrollView, StatusBar, StyleSheet, Text, Image, useColorScheme, View,TouchableOpacity} from 'react-native';
+import {SafeAreaView,Alert, ScrollView, StatusBar,Platform, KeyboardAvoidingView, StyleSheet, Text, Image, useColorScheme, View,TouchableOpacity} from 'react-native';
 import styles from "../styles/styles";
 import {NavigationContainer } from '@react-navigation/native';
 import { GiftedChat, IMessage } from 'react-native-gifted-chat';
@@ -25,8 +25,7 @@ export default function Chats(){
                     setMessages((prevMessages) =>
                 GiftedChat.append(prevMessages, data))
                 }
-                // console.log('chats: ', snapshot.val());
-           
+                 //console.log('chats: ', snapshot.val());
             }
             
         })
@@ -40,7 +39,7 @@ export default function Chats(){
         getUser();
       },[])
     return(
-        <View style={styles.chatContainer}>
+        <View style={styles.chatScreen}>
             {user ?
             <GiftedChat messages={messages} onSend={(messages) => {handleSend(messages)}} user={{_id: user.email}} />
                 :
