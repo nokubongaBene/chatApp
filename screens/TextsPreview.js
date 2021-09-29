@@ -5,7 +5,7 @@ import {NavigationContainer } from '@react-navigation/native';
 import { GiftedChat, IMessage } from 'react-native-gifted-chat';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
-import tryme from "../images/tryme.jpg";
+import tryme from "../images/favs.jpg";
 
 
 
@@ -19,16 +19,15 @@ export default function TextsPreview({navigation}){
         database().ref('Users/').on('value', snapshot => {
             if(snapshot.val() != null){
                 setDisplay([]);
-                console.log('hello')
                 let data = new Array();
                 let texts = snapshot.val();
                 let keys = Object.keys(texts);
-                console.log(keys);
+                // console.log(keys);
                 for(let x =0; x<keys.length; x++ ){
                     data.push(texts[keys[x]])
                 //    console.log(texts[keys[x]]);
                     }
-                    console.log(data);
+                    // console.log(data);
                     setUsersList(data);
                 }
                 // console.log('chats: ', snapshot.val());
@@ -63,10 +62,9 @@ export default function TextsPreview({navigation}){
         }
           return(
             
-            <View>
+            <View style={styles.chatScreen}>
                 <View style={styles.currentEmail}>
                 <Image source={tryme} style={styles.image} />
-                    <Text> benedictankambs@gmail.com</Text>
                     </View>
                 
                 {displayUsers()}

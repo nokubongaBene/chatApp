@@ -11,7 +11,9 @@ export default function Chats(){
     const [user, setUser] = useState();
 
     const handleSend = (messages) => {
-        database().ref('chatId/' + Date.now().toString()).set(messages[0]);
+        let messObject = messages[0];
+        messObject.createdAt = new Date();
+        database().ref('chatId/' + Date.now().toString()).set(messObject);
     }
     const handleChats = () => {
         database().ref('chatId/').on('value', snapshot => {
@@ -20,10 +22,11 @@ export default function Chats(){
                 let texts = snapshot.val();
                 let keys = Object.keys(texts);
                 console.log(keys);
+                keys.sort()
                 for(let x =0; x<keys.length; x++ ){
                     let data = texts[keys[x]];
                     setMessages((prevMessages) =>
-                GiftedChat.append(prevMessages, data))
+                GiftedChat.append(prevMessages,data))
                 }
                  //console.log('chats: ', snapshot.val());
             }
